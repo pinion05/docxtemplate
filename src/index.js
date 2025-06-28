@@ -62,6 +62,28 @@ app.whenReady().then(() => {
     }
   });
 
+  ipcMain.handle('extract-placeholders', async (event, buffer) => {
+    try {
+      const zip = new PizZip(buffer);
+      const names = new Set();
+      Object.keys(zip.files).forEach((relPath) => {
+        if (/word\/.*\.xml$/.test(relPath)) {
+          const xml = zip.files[relPath].asText();
+          // XML 태그 제거 후 순수 텍스트만 추출 (runs 분할 문제 해결)
+          const text = xml.replace(/<[^>]+>/g, '');
+          const regex = /\{[#/\\^]?([^{}]+?)\}/g;
+          let m;
+          while ((m = regex.exec(text)) !== null) {
+            names.add(m[1]);
+          }
+        }
+      });
+      return Array.from(names);
+    } catch (e) {
+      throw e.message || e;
+    }
+  });
+
   ipcMain.handle('convert-docx-to-html', async (event, docxPath) => {
     try {
       const result = await mammoth.convertToHtml({ path: docxPath });

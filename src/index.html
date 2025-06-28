@@ -108,15 +108,8 @@
         <label for="templateFile">템플릿 파일 업로드 (docx)</label><br>
         <input type="file" id="templateFile" accept=".docx">
       </div>
-      <div>
-        <label for="inputName1">name1</label><br>
-        <input type="text" id="inputName1" placeholder="예: 홍길동">
-      </div>
-      <div>
-        <label for="inputName2">name2</label><br>
-        <input type="text" id="inputName2" placeholder="예: 서울">
-      </div>
-      <button id="generateBtn">문서 생성</button>
+      <div id="placeholderContainer"></div>
+      <button id="generateBtn" disabled>문서 생성</button>
       <div id="result"></div>
       <button id="printBtn" style="margin-top:10px;">프린트</button>
     </div>
