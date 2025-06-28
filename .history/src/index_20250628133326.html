@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+  <h1>DOCX 템플릿 생성기</h1>
+  <div>
+    <label>템플릿 파일 업로드 (docx): </label>
+    <input type="file" id="templateFile" accept=".docx">
+  </div>
+  <div>
+    <label>name1: </label>
+    <input type="text" id="inputName1" placeholder="예: 홍길동">
+  </div>
+  <div>
+    <label>name2: </label>
+    <input type="text" id="inputName2" placeholder="예: 서울">
+  </div>
+  <button id="generateBtn">문서 생성</button>
+  <div id="result"></div>
+  <button id="printBtn">프린트</button>
+  <div id="preview-container" style="margin-top:20px;">
+    <iframe id="docxPreview" style="width:100%;height:500px;border:1px solid #ccc;"></iframe>
+  </div>
+
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
